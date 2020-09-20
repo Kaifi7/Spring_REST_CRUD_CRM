@@ -1,0 +1,6 @@
+	1. mvn clean package -DskipTests
+	2. docker build -t spring_rest_crud_crm:1.5 .
+	3. docker run -d -it --name mysqlSpring_rest_crud_crmC -p 3306:3306 -e "MYSQL_ROOT_PASSWORD=springstudent" -e "MYSQL_USER=springstudent" -e "MYSQL_PASSWORD=springstudent" -e "MYSQL_DATABASE=web_customer_tracker" mysql:5.7
+	4. docker run --name  spring_rest_crud_crmC --publish 8080:8080 --link mysqlSpring_rest_crud_crmC:mysqlSpring_rest_crud_crmC spring_rest_crud_crm:1.5  
+	5. winpty docker exec -it mysqlSpring_rest_crud_crmC bash
+	6. mysql -uroot -p

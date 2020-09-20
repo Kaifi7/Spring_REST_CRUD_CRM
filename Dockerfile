@@ -1,5 +1,9 @@
 FROM tomcat:9.0.37-jdk14-openjdk
-EXPOSE 8080
+LABEL maintainer=Kafeel
+LABEL company=TCS
 RUN rm -rf /usr/local/tomcat/webapps/*
-COPY target/*.war /usr/local/tomcat/webapps/ROOT.war
+COPY ./target/*.war /usr/local/tomcat/webapps/ROOT.war
+#COPY ./target/*.jar app.jar
+EXPOSE 8080
 CMD ["catalina.sh","run"]
+#CMD ["java","-jar","app.jar"]
